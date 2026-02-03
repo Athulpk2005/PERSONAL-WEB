@@ -54,9 +54,9 @@ const Services = () => {
           </div>
         </FadeIn>
 
-        {/* ===== FIRST ROW (2 CARDS) ===== */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-14">
-          {services.slice(0, 2).map((service, index) => {
+        {/* ===== FIRST ROW (3 CARDS) ===== */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-14">
+          {services.slice(0, 3).map((service, index) => {
             const IconComponent = Icons[service.icon] || Icons.Code2
             return (
               <FadeIn key={service.id} delay={index * 100}>
@@ -68,10 +68,10 @@ const Services = () => {
 
         {/* ===== SECOND ROW (4 CARDS) ===== */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.slice(2, 6).map((service, index) => {
+          {services.slice(3, 7).map((service, index) => {
             const IconComponent = Icons[service.icon] || Icons.Code2
             return (
-              <FadeIn key={service.id} delay={(index + 2) * 100}>
+              <FadeIn key={service.id} delay={(index + 3) * 100}>
                 <ServiceCard service={service} IconComponent={IconComponent} />
               </FadeIn>
             )
@@ -89,11 +89,11 @@ export default Services
 const ServiceCard = ({ service, IconComponent }) => {
   return (
     <div className="group relative bg-white/5 border border-white/10 p-6 rounded-2xl transition-all duration-300 hover:border-primary/30 hover:-translate-y-1
-                    flex flex-col h-64">
+                    flex flex-col min-h-64">
       {/* h-64 makes the card smaller */}
 
       {/* Icon */}
-      <div className="w-12 h-12 mb-6 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition flex-shrink-0">
+      <div className="w-12 h-12 mb-6 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition shrink-0">
         <IconComponent className="w-6 h-6 text-primary" />
       </div>
 
@@ -109,7 +109,7 @@ const ServiceCard = ({ service, IconComponent }) => {
       </div>
 
       {/* Glow overlay on hover */}
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition pointer-events-none bg-gradient-to-br from-primary/10 to-transparent" />
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition pointer-events-none bg-linear-to-br from-primary/10 to-transparent" />
     </div>
   )
 }

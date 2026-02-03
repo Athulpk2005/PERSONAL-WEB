@@ -68,8 +68,8 @@ const Footer = () => {
             {/* ===== RIGHT: Social ===== */}
             <div className="text-center md:text-right">
               <h4 className="text-lg font-semibold text-white mb-6">Connect with Me</h4>
-              <p className="text-white/60 text-sm mb-4 max-w-xs ml-auto">
-                Let’s build something amazing together.
+              <p className="text-white/60 text-sm mb-4 max-w-xs mx-auto ml-auto">
+                Let's build something amazing together.
               </p>
               <div className="flex justify-center md:justify-end gap-4">
                 {Object.entries(SOCIAL_LINKS).map(([platform, url]) => {

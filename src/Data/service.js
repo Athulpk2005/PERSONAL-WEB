@@ -35,5 +35,11 @@ export const services = [
         icon: "GitBranch",
         title: "Code Review & Consulting",
         description: "Providing code reviews and consulting services to help improve code quality and performance.",
+    },
+    {
+        id: 7,
+        icon: "Search",
+        title: "SEO Optimization",
+        description: "Implementing SEO best practices to improve website visibility and search engine rankings.",
     }
 ]

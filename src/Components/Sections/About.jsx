@@ -23,6 +23,7 @@ const About = () => {
     { name: 'CSS', icon: SiCss3, color: '#1572b6' },
     { name: 'JavaScript', icon: SiJavascript, color: '#f7df1e' },
     { name: 'React', icon: SiReact, color: '#61dafb' },
+    { name: 'React Native', icon: SiReact, color: '#61dafb' },
     { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06b6d4' },
     { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
     { name: 'Express', icon: SiExpress, color: '#ffffff' },
@@ -45,7 +46,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
 
           {/* ================= LEFT COLUMN ================= */}
-          <div className="flex flex-col gap-12 items-start">
+          <div className="flex flex-col gap-12 items-start md:items-center lg:items-start">
             <FadeIn delay={60}>
               <div className="inline-flex items-center gap-2.5 px-5 py-2.5 border border-primary/30 bg-primary/10 rounded-full">
                 <Code2 className="w-4 h-4 text-primary" />
@@ -57,13 +58,13 @@ const About = () => {
             </FadeIn>
 
             <FadeIn delay={100}>
-              <h2 className="text-4xl lg:text-5xl font-normal text-white leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-normal text-white leading-tight md:text-center lg:text-left">
                 Crafting Digital Experiences That Matter
               </h2>
             </FadeIn>
 
             <FadeIn delay={200}>
-              <div className="flex flex-col gap-4 max-w-xl">
+              <div className="flex flex-col gap-4 max-w-xl md:text-center lg:text-left">
                 {PERSONAL_INFO.bio.map((text, index) => (
                   <p
                     key={index}
@@ -90,11 +91,11 @@ const About = () => {
 
           {/* ================= RIGHT COLUMN ================= */}
           <FadeIn delay={200}>
-            <div className="w-full max-w-xl ml-auto grid grid-cols-2 gap-4">
+            <div className="w-full max-w-xl md:mx-auto lg:ml-auto grid grid-cols-2 gap-4">
 
               {/* Expertise Card */}
               <div className="col-span-2 relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
                 <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all">
                   <div className="flex items-start gap-4">
                     <div className="p-3 bg-primary/10 rounded-xl">
@@ -115,7 +116,7 @@ const About = () => {
 
               {/* Clean Code */}
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
                 <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all h-full">
                   <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
                     <Sparkles className="w-5 h-5 text-primary" />
@@ -132,7 +133,7 @@ const About = () => {
 
               {/* Performance */}
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
                 <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all h-full">
                   <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
                     <Download className="w-5 h-5 text-primary" />
@@ -149,7 +150,7 @@ const About = () => {
 
               {/* Stats */}
               <div className="col-span-2 relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
                 <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all">
                   <div className="grid grid-cols-3 text-center gap-6">
                     <div>

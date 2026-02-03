@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Testing Tool - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .device-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .device-btn {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .device-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .device-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .custom-width {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .custom-width label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .custom-width input {
+            padding: 8px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100px;
+        }
+
+        .custom-width button {
+            padding: 8px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .custom-width button:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #e9ecef;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-label {
+            color: #6c757d;
+        }
+
+        .info-value {
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .iframe-container {
+            padding: 30px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+        }
+
+        .iframe-wrapper {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        iframe {
+            display: block;
+            border: none;
+            height: 800px;
+        }
+
+        .tips {
+            padding: 30px;
+            background: #fff3cd;
+            border-top: 3px solid #ffc107;
+        }
+
+        .tips h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .tips ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tips li {
+            padding: 8px 0;
+            color: #856404;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .tips li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #343a40;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .device-buttons {
+                flex-direction: column;
+            }
+
+            .device-btn {
+                width: 100%;
+            }
+
+            .info-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .custom-width {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .custom-width input,
+            .custom-width button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📱 Portfolio Responsive Testing Tool</h1>
+            <p>Test your portfolio across different device widths</p>
+        </div>
+
+        <div class="controls">
+            <div class="device-buttons">
+                <button class="device-btn" onclick="setWidth(375)">📱 iPhone SE (375px)</button>
+                <button class="device-btn" onclick="setWidth(390)">📱 iPhone 12 (390px)</button>
+                <button class="device-btn" onclick="setWidth(428)">📱 iPhone Pro Max (428px)</button>
+                <button class="device-btn" onclick="setWidth(640)">📱 Mobile Landscape (640px)</button>
+                <button class="device-btn" onclick="setWidth(768)">📱 iPad Mini (768px)</button>
+                <button class="device-btn" onclick="setWidth(810)">📱 iPad (810px)</button>
+                <button class="device-btn" onclick="setWidth(1024)">💻 iPad Pro (1024px)</button>
+                <button class="device-btn" onclick="setWidth(1280)">💻 Laptop (1280px)</button>
+                <button class="device-btn active" onclick="setWidth(1920)">🖥️ Desktop (1920px)</button>
+                <button class="device-btn" onclick="setWidth(2560)">🖥️ Ultra-wide (2560px)</button>
+            </div>
+
+            <div class="custom-width">
+                <label for="customWidth">Custom Width:</label>
+                <input type="number" id="customWidth" placeholder="Enter width" min="320" max="3840">
+                <button onclick="setCustomWidth()">Apply</button>
+            </div>
+        </div>
+
+        <div class="info-bar">
+            <div class="info-item">
+                <span class="info-label">Current Width:</span>
+                <span class="info-value" id="currentWidth">1920px</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Breakpoint:</span>
+                <span class="info-value" id="breakpoint">3xl (Desktop)</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Device:</span>
+                <span class="info-value" id="deviceType">Desktop</span>
+            </div>
+        </div>
+
+        <div class="iframe-container">
+            <div class="iframe-wrapper" id="iframeWrapper">
+                <iframe id="portfolioFrame" src="http://localhost:5173/" width="1920"></iframe>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>💡 Testing Tips</h3>
+            <ul>
+                <li>Click on different device buttons to see how your portfolio adapts</li>
+                <li>Scroll through the entire page to check all sections</li>
+                <li>Look for horizontal overflow (should never happen)</li>
+                <li>Check that text is readable at all sizes</li>
+                <li>Verify that images scale properly</li>
+                <li>Test interactive elements (buttons, links, navigation)</li>
+                <li>On mobile widths, check that the hamburger menu works</li>
+                <li>Verify that forms are usable on small screens</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>🚀 Portfolio Responsive Testing Tool | Built with ❤️ for Athul</p>
+        </div>
+    </div>
+
+    <script>
+        function setWidth(width) {
+            const iframe = document.getElementById('portfolioFrame');
+            const wrapper = document.getElementById('iframeWrapper');
+            const currentWidthEl = document.getElementById('currentWidth');
+            const breakpointEl = document.getElementById('breakpoint');
+            const deviceTypeEl = document.getElementById('deviceType');
+
+            // Update iframe width
+            iframe.width = width;
+            currentWidthEl.textContent = width + 'px';
+
+            // Determine breakpoint
+            let breakpoint = 'base (Mobile)';
+            let deviceType = 'Mobile Portrait';
+
+            if (width >= 2560) {
+                breakpoint = '3xl+ (Ultra-wide)';
+                deviceType = 'Ultra-wide Monitor';
+            } else if (width >= 1920) {
+                breakpoint = '3xl (Desktop)';
+                deviceType = 'Desktop';
+            } else if (width >= 1536) {
+                breakpoint = '2xl (Large Desktop)';
+                deviceType = 'Large Desktop';
+            } else if (width >= 1280) {
+                breakpoint = 'xl (Desktop)';
+                deviceType = 'Desktop';
+            } else if (width >= 1024) {
+                breakpoint = 'lg (Laptop/Tablet)';
+                deviceType = 'Laptop / iPad Pro';
+            } else if (width >= 768) {
+                breakpoint = 'md (Tablet)';
+                deviceType = 'Tablet Portrait';
+            } else if (width >= 640) {
+                breakpoint = 'sm (Mobile Landscape)';
+                deviceType = 'Mobile Landscape';
+            }
+
+            breakpointEl.textContent = breakpoint;
+            deviceTypeEl.textContent = deviceType;
+
+            // Update active button
+            document.querySelectorAll('.device-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function setCustomWidth() {
+            const customWidth = document.getElementById('customWidth').value;
+            if (customWidth && customWidth >= 320 && customWidth <= 3840) {
+                setWidth(parseInt(customWidth));
+            } else {
+                alert('Please enter a width between 320px and 3840px');
+            }
+        }
+
+        // Allow Enter key in custom width input
+        document.getElementById('customWidth').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                setCustomWidth();
+            }
+        });
+    </script>
+</body>
+</html>

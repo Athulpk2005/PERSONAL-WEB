@@ -9,6 +9,7 @@ const Skills = () => {
   const skillCategories = {
     'Frontend Development': [
       skills.find(s => s.name === 'React.js'),
+      skills.find(s => s.name === 'React Native'),
       skills.find(s => s.name === 'JavaScript'),
       skills.find(s => s.name === 'HTML'),
       skills.find(s => s.name === 'CSS'),
@@ -106,7 +107,7 @@ const Skills = () => {
 
                 {/* Category header */}
                 <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
-                  <div className="w-1 h-8 bg-gradient-to-b from-primary/40 to-primary/10 rounded-full" />
+                  <div className="w-1 h-8 bg-linear-to-b from-primary/40 to-primary/10 rounded-full" />
                   <h3 className="text-xl text-white font-medium">{category}</h3>
                 </div>
 
@@ -139,7 +140,7 @@ const Skills = () => {
                         {/* Progress bar */}
                         <div className="relative h-1.5 bg-white/5 rounded-full overflow-hidden">
                           <div
-                            className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary/30 to-primary rounded-full transition-all duration-1000 ease-out"
+                            className="absolute inset-y-0 left-0 bg-linear-to-r from-primary/30 to-primary rounded-full transition-all duration-1000 ease-out"
                             style={{ width: `${proficiency}%` }}
                           />
                         </div>
@@ -150,7 +151,7 @@ const Skills = () => {
                 </div>
 
                 {/* Hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5  group-hover:from-primary/5 group-hover:to-primary/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/5  group-hover:from-primary/5 group-hover:to-primary/5 rounded-2xl transition-all duration-300 pointer-events-none"></div>
 
               </div>
             </FadeIn>
