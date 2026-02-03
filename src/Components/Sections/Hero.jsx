@@ -36,7 +36,7 @@ const Hero = () => {
 
             <FadeIn delay={200}>
               <p className='text-lg text-white/70 mx-w-[500px] mb-8'>
-                I’m a MERN Stack Developer & UI/UX Designer crafting modern web experiences with a perfect balance of design and functionality.
+                I’m a Full Stack Developer & UI/UX Designer crafting modern web experiences with a perfect balance of design and functionality.
                 I love designing intuitive interfaces and building them with clean, scalable code.</p>
             </FadeIn>
 

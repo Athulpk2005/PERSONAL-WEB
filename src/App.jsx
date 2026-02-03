@@ -7,9 +7,16 @@ import Projects from './Components/Sections/Projects'
 import Services from './Components/Sections/Services'
 import Contact from './Components/Sections/Contact'
 import Footer from './Components/Layout/Footer'
-
+import Loader from './Components/Loader/Loader'
+import useLoader from './Hooks/useLoader'
 
 const App = () => {
+  const isLoading = useLoader();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className='min-h-screen bg-black'>
       <Navbar />

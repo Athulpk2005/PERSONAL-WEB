@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ExternalLink, Github, TrendingUp, Behance } from 'lucide-react'
+import { ExternalLink, Github, TrendingUp } from 'lucide-react'
 
 
 

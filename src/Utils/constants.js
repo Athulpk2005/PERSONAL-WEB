@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
     tagline: "Full Stack Developer with a passion for creating engaging and user-friendly websites.",
     resume:"",
     bio: [
-        "I’m a fresher MERN Stack Developer with UI/UX design skills, experienced in designing and developing full-stack web applications.I work with Figma, React, Node.js, Express, and MongoDB to create user-centric, responsive, and scalable digital solutions. I’m actively seeking opportunities to start my professional career in full-stack development and UI/UX design."
+        "I’m a fresher Full Stack Developer with UI/UX design skills, experienced in designing,developing full-stack web applications and mobile applications.I work with Figma, React, Node.js, Express,React Native and MongoDB to create user-centric, responsive, and scalable digital solutions. I’m actively seeking opportunities to start my professional career in full-stack development and UI/UX design."
     ]
 }
 
