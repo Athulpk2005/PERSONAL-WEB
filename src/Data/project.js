@@ -26,7 +26,7 @@ export const projects = [
         category: "UI Components",
         Technologies: ["Figma"],
         Demo: "https://www.behance.net/gallery/243464663/Portfolio",
-        
+
     }
 ]
 
@@ -35,4 +35,5 @@ export const categories = [
     "Web Apps",
     "FUll Stack",
     "UI Components",
+    "Mobile Apps",
 ]

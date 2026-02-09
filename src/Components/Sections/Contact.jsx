@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import { PERSONAL_INFO, SOCIAL_LINKS } from '../../Utils/constants'
 import FadeIn from '../Animations/FadeIn'
+import { submitMessage } from '../../services/messageService'
 
 const socialIcons = {
   github: Github,
@@ -26,13 +27,25 @@ const Contact = () => {
     message: ''
   })
   const [status, setStatus] = useState({ type: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [lastSubmission, setLastSubmission] = useState(0)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    // Rate limiting: 1 submission per minute
+    const now = Date.now()
+    if (now - lastSubmission < 60000) {
+      setStatus({ 
+        type: 'error', 
+        message: 'Please wait 1 minute before submitting again.' 
+      })
+      return
+    }
 
     if (!formData.name || !formData.email || !formData.message) {
       setStatus({ type: 'error', message: 'Please fill all fields' })
@@ -45,12 +58,25 @@ const Contact = () => {
       return
     }
 
-    setStatus({
-      type: 'success',
-      message: 'Message sent successfully! I will get back to you soon.'
-    })
-
-    setFormData({ name: '', email: '', message: '' })
+    setIsSubmitting(true)
+    setLastSubmission(now)
+    
+    const result = await submitMessage(formData)
+    
+    if (result.success) {
+      setStatus({
+        type: 'success',
+        message: 'Message sent successfully! I will get back to you soon.'
+      })
+      setFormData({ name: '', email: '', message: '' })
+    } else {
+      setStatus({
+        type: 'error',
+        message: result.error || 'Failed to send message. Please try again.'
+      })
+    }
+    
+    setIsSubmitting(false)
     setTimeout(() => setStatus({ type: '', message: '' }), 5000)
   }
 
@@ -109,8 +135,21 @@ const Contact = () => {
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white resize-none focus:ring-2 focus:ring-primary/50"
                 />
 
-                <button className="w-full py-3 px-6 bg-gradient-to-r from-primary/10 to-primary rounded-xl font-medium text-white flex items-center justify-center gap-2 hover:shadow-2xl hover:shadow-primary/30 transition group">
-                  Send Message <Send className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3 px-6 bg-gradient-to-r from-primary/10 to-primary rounded-xl font-medium text-white flex items-center justify-center gap-2 hover:shadow-2xl hover:shadow-primary/30 transition group disabled:opacity-50"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message <Send className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                    </>
+                  )}
                 </button>
 
                 {status.message && (

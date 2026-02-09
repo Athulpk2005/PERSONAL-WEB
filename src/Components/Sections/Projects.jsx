@@ -9,6 +9,7 @@ import {
   Zap,
   ChevronLeft,
   ChevronRight,
+  Smartphone,
 } from 'lucide-react'
 import ProjectCard from '../ui/ProjectCard'
 import FadeIn from '../Animations/FadeIn'
@@ -47,6 +48,7 @@ const Projects = () => {
     'Web Apps': Globe,
     'UI Components': Palette,
     'Full Stack': Zap,
+    'Mobile Apps': Smartphone,
   }
 
   /* =======================
