@@ -3,14 +3,15 @@ import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, serverTimest
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 
 // Your web app's Firebase configuration
+// IMPORTANT: Ensure all environment variables are set in .env file
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDGoZOgl9K7aLDGlBh42v-HZ459JsC_PpM",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "portfolio-36eaf.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "portfolio-36eaf",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "portfolio-36eaf.firebasestorage.app",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "651955508421",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:651955508421:web:5901eed2303374d68c8cac",
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-XBXKVNWVF1"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

@@ -1,0 +1,42 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && request.auth.token.email == 'admin@athulportfolio.com';
+    }
+    
+    // Messages collection
+    match /messages/{messageId} {
+      // Anyone can read messages (public portfolio contact form)
+      allow read: if true;
+      
+      // Only authenticated users can create messages
+      // Rate limited on client side, additional validation on server
+      allow create: if isAuthenticated()
+        && request.resource.data.name.size() >= 2
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.message.size() >= 10
+        && request.resource.data.message.size() <= 1000
+        && request.resource.data.email.matches('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$')
+        && request.resource.data.status == 'unread';
+      
+      // Only admins can update message status
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'readAt']);
+      
+      // Only admins can delete messages
+      allow delete: if isAdmin();
+    }
+    
+    // Admin-related collections (if any)
+    match /admin/{document=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
