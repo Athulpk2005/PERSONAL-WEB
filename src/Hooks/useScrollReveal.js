@@ -6,13 +6,23 @@ export const useScrollReveal = (options = {}) => {
         rootMargin = '0px'
     } = options;
 
-
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
 
+    // Check for reduced motion preference
+    const prefersReducedMotion = typeof window !== 'undefined'
+        ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        : false;
+
     useEffect(() => {
+        // Skip animation if user prefers reduced motion
+        if (prefersReducedMotion) {
+            setIsVisible(true);
+            return;
+        }
+
         const element = ref.current;
-        if(!element) return;
+        if (!element) return;
 
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -33,7 +43,7 @@ export const useScrollReveal = (options = {}) => {
                 observer.unobserve(element);
             }
         }
-    }, [ threshold, rootMargin]);
+    }, [threshold, rootMargin, prefersReducedMotion]);
 
     return { ref, isVisible };
 }

@@ -31,7 +31,7 @@ const StyledWrapper = styled.div`
     background-color: #000;
     z-index: 9999;
 
-    font-family: "Poppins", sans-serif;
+    font-family: "Urbanist", sans-serif;
     font-size: 1.6em;
     font-weight: 600;
     user-select: none;
@@ -102,6 +102,24 @@ const StyledWrapper = styled.div`
     }
     65% {
       opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loader-wrapper {
+      scale: 1 !important;
+    }
+
+    .loader,
+    .loader::after,
+    .loader-letter {
+      animation: none !important;
+    }
+
+    .loader-letter {
+      opacity: 1 !important;
+      text-shadow: none !important;
+      transform: none !important;
     }
   }
 

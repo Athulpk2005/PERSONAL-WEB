@@ -111,6 +111,7 @@ const Hero = () => {
       <button
         onClick={() => scrollToSection('about')}
         className='absolute bottom-8 left-1/2 translate-x-1/2 animate-bounce'
+        aria-label='Scroll to About section'
       >
         <ChevronDown className='w-8 h-8 text-primary' />
       </button>

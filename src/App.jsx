@@ -33,7 +33,7 @@ const App = () => {
   return (
     <div className='min-h-screen bg-black'>
       <Navbar />
-      <main>
+      <main id="main-content" role="main">
         <Hero />
         <About />
         <Skills />
