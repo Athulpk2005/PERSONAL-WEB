@@ -26,25 +26,25 @@ const ProtectedAdmin = () => {
     setIsLoading(true);
 
     const result = await loginAdmin(email, password);
-    
+
     if (result.success) {
       setEmail('');
       setPassword('');
     } else {
       setError(result.error);
     }
-    
+
     setIsLoading(false);
   };
 
   const handleLogout = async () => {
     setIsLoading(true);
     const result = await logoutAdmin();
-    
+
     if (!result.success) {
       setError(result.error);
     }
-    
+
     setIsLoading(false);
   };
 
@@ -59,13 +59,14 @@ const ProtectedAdmin = () => {
   if (user) {
     return (
       <div>
-        <div className="fixed top-4 right-4 z-50">
+        <div className="absolute sm:fixed top-4 right-4 z-50">
           <button
             onClick={handleLogout}
-            className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-2 rounded-lg hover:bg-red-500/20 transition flex items-center gap-2"
+            className="bg-red-500/10 border border-red-500/30 text-red-400 px-3 sm:px-4 py-2 rounded-lg hover:bg-red-500/20 transition flex items-center gap-2"
           >
             <LogOut className="w-4 h-4" />
-            Logout ({user.email})
+            <span className="hidden sm:inline">Logout ({user.email})</span>
+            <span className="sm:hidden">Logout</span>
           </button>
         </div>
         <MessageAdmin />
@@ -75,7 +76,7 @@ const ProtectedAdmin = () => {
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <div className="bg-white/5 border border-white/10 rounded-2xl p-8 w-full max-w-md">
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 w-full max-w-md">
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mx-auto mb-4">
             <Lock className="w-8 h-8 text-primary" />
@@ -130,7 +131,7 @@ const ProtectedAdmin = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 bg-gradient-to-r from-primary/10 to-primary rounded-xl font-medium text-white hover:shadow-lg hover:shadow-primary/30 transition disabled:opacity-50"
+            className="w-full py-3 bg-linear-to-r from-primary/10 to-primary rounded-xl font-medium text-white hover:shadow-lg hover:shadow-primary/30 transition disabled:opacity-50"
           >
             {isLoading ? 'Signing in...' : 'Sign In'}
           </button>

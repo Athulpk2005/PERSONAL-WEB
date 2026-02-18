@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './Components/Layout/Navbar'
 import Hero from './Components/Sections/Hero'
 import About from './Components/Sections/About'
@@ -15,9 +15,10 @@ const App = () => {
   const isLoading = useLoader();
   const [showAdmin, setShowAdmin] = useState(false);
 
-  // Check if URL contains admin
-  React.useEffect(() => {
-    if (window.location.pathname === '/admin') {
+  // Check if URL contains admin (handles refresh and direct navigation)
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path === '/admin' || path.startsWith('/admin/') || path === '/admin.html') {
       setShowAdmin(true);
     }
   }, []);

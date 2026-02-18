@@ -16,7 +16,7 @@ const MessageAdmin = () => {
       console.log('Fetching messages from Firebase...');
       const querySnapshot = await getDocs(collection(db, 'messages'));
       console.log('Messages fetched:', querySnapshot.docs.length);
-      
+
       const messagesData = querySnapshot.docs
         .map(doc => ({ id: doc.id, ...doc.data() }))
         .sort((a, b) => {
@@ -26,7 +26,7 @@ const MessageAdmin = () => {
           }
           return 0;
         });
-      
+
       console.log('Processed messages:', messagesData);
       setMessages(messagesData);
       setLoading(false);
@@ -71,7 +71,7 @@ const MessageAdmin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black p-8">
+    <div className="min-h-screen bg-black pt-20 px-4 pb-4 sm:p-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Message Admin</h1>
@@ -88,35 +88,33 @@ const MessageAdmin = () => {
             messages.map((message) => (
               <div
                 key={message.id}
-                className={`bg-white/5 border border-white/10 rounded-xl p-6 ${
-                  message.status === 'unread' ? 'border-primary/30' : ''
-                }`}
+                className={`bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 ${message.status === 'unread' ? 'border-primary/30' : ''
+                  }`}
               >
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <h3 className="text-lg font-semibold text-white">{message.name}</h3>
-                      <span className={`px-2 py-1 text-xs rounded-full ${
-                        message.status === 'unread' 
-                          ? 'bg-primary/20 text-primary' 
-                          : 'bg-white/10 text-white/60'
-                      }`}>
+                      <span className={`px-2 py-1 text-xs rounded-full ${message.status === 'unread'
+                        ? 'bg-primary/20 text-primary'
+                        : 'bg-white/10 text-white/60'
+                        }`}>
                         {message.status === 'unread' ? 'Unread' : 'Read'}
                       </span>
                     </div>
-                    <a 
+                    <a
                       href={`mailto:${message.email}`}
                       className="text-primary hover:underline text-sm"
                     >
                       {message.email}
                     </a>
                   </div>
-                  <div className="flex items-center gap-2 text-white/40 text-sm">
+                  <div className="flex items-center gap-2 text-white/40 text-xs sm:text-sm">
                     <Clock className="w-4 h-4" />
                     {formatDate(message.timestamp)}
                   </div>
                 </div>
-                
+
                 <div className="mb-4">
                   <p className="text-white/80 whitespace-pre-wrap">{message.message}</p>
                 </div>

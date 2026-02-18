@@ -1,5 +1,5 @@
 import React from 'react'
-import { Download, Code2, Sparkles } from 'lucide-react'
+import { Download, Code2, Sparkles, Eye } from 'lucide-react'
 import {
   SiHtml5,
   SiCss3,
@@ -77,15 +77,15 @@ const About = () => {
             </FadeIn>
 
             <FadeIn delay={300}>
-              <button
-                onClick={() =>
-                  window.open(PERSONAL_INFO.resume, '_blank')
-                }
+              <a
+                href={PERSONAL_INFO.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-white text-black rounded-full px-8 py-4 text-base font-medium hover:bg-white/90 transition-all duration-300"
               >
-                <Download className="w-5 h-5" />
-                Download Resume
-              </button>
+                <Eye className="w-5 h-5" />
+                View Resume
+              </a>
             </FadeIn>
           </div>
 
