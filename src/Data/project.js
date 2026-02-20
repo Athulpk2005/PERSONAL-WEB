@@ -6,7 +6,7 @@ export const projects = [
         image: "/P12.jpeg",
         category: "Full Stack",
         Technologies: ["React", "Node.js", "MongoDB", "Express"],
-        Demo: "#",
+        Demo: "https://knoera-frontend1.vercel.app/",
         GitHub: "https://github.com/Athulpk2005/Ai-Learning-Platform-KnoEra-Ai",
     },
     {
