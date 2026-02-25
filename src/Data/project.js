@@ -1,5 +1,15 @@
 export const projects = [
     {
+        id: 0,
+        title: "Anime-Chronos",
+        description: "Anime Chronos is a high-end, data-driven tracking platform designed for the ultimate anime enthusiast. It solves the complexity of modern anime franchises by providing a seamless, chronological Watch Order roadmap for every series and movie.",
+        image: "/P13.jpeg",
+        category: "Full Stack",
+        Technologies: ["React", "Next.js", "Tailwind CSS", "Firebase"],
+        Demo: "https://animechronos.vercel.app/",
+        GitHub: "https://github.com/Athulpk2005/Anime-Chronos",
+    },
+    {
         id: 1,
         title: "Ai-Learning Assistant",
         description: "AI-Powered Learning Assistant App built with the MERN stack. The app provides personalized learning experiences, intelligent recommendations, and real-time feedback to help users improve their skills and knowledge.",
