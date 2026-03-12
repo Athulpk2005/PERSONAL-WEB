@@ -73,8 +73,10 @@ const Hero = () => {
                   <div className=' absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-spin-slow rounded-2xl'></div>
                 </div>
                 {/* Image Container*/}
-                <div className='relative rounded-2xl overflow-hidden m-[1px] h-[calc(100%-2px)]'>
+                <div className='relative rounded-2xl overflow-hidden m-px h-[calc(100%-2px)]'>
                   <img src={Dev} alt="DEVELOPER AT WORK"
+                    fetchpriority="high"
+                    decoding="async"
                     className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' />
                 </div>
 

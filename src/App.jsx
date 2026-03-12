@@ -1,15 +1,38 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense, lazy } from 'react'
 import Navbar from './Components/Layout/Navbar'
-import Hero from './Components/Sections/Hero'
-import About from './Components/Sections/About'
-import Skills from './Components/Sections/Skills'
-import Projects from './Components/Sections/Projects'
-import Services from './Components/Sections/Services'
-import Contact from './Components/Sections/Contact'
+import Hero from './Components/Sections/Hero' // Keep Hero static for LCP
 import Footer from './Components/Layout/Footer'
 import Loader from './Components/Loader/Loader'
 import useLoader from './Hooks/useLoader'
-import ProtectedAdmin from './Components/Admin/ProtectedAdmin'
+
+// Lazy load non-critical components
+const About = lazy(() => import('./Components/Sections/About'));
+const Skills = lazy(() => import('./Components/Sections/Skills'));
+const Projects = lazy(() => import('./Components/Sections/Projects'));
+const Services = lazy(() => import('./Components/Sections/Services'));
+const Contact = lazy(() => import('./Components/Sections/Contact'));
+const ProtectedAdmin = lazy(() => import('./Components/Admin/ProtectedAdmin'));
+
+const AppContent = () => (
+  <>
+    <Hero />
+    <Suspense fallback={<div className="h-20" />}>
+      <About />
+    </Suspense>
+    <Suspense fallback={<div className="h-20" />}>
+      <Skills />
+    </Suspense>
+    <Suspense fallback={<div className="h-20" />}>
+      <Projects />
+    </Suspense>
+    <Suspense fallback={<div className="h-20" />}>
+      <Services />
+    </Suspense>
+    <Suspense fallback={<div className="h-20" />}>
+      <Contact />
+    </Suspense>
+  </>
+);
 
 const App = () => {
   const isLoading = useLoader();
@@ -27,22 +50,21 @@ const App = () => {
     return <Loader />;
   }
 
-  if (showAdmin) {
-    return <ProtectedAdmin />;
-  }
-
   return (
     <div className='min-h-screen bg-black'>
-      <Navbar />
-      <main id="main-content" role="main">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Services />
-        <Contact />
-      </main>
-      <Footer />
+      {showAdmin ? (
+        <Suspense fallback={<Loader />}>
+          <ProtectedAdmin />
+        </Suspense>
+      ) : (
+        <>
+          <Navbar />
+          <main id="main-content" role="main">
+            <AppContent />
+          </main>
+          <Footer />
+        </>
+      )}
     </div>
   )
 }

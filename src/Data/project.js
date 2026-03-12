@@ -1,6 +1,25 @@
 export const projects = [
     {
-        id: 0,
+        id:0,
+        title:"Auto-Taxi Finder",
+        description:"A mobile application platform connecting local auto-rickshaw drivers with passengers in real-time. The app aims to solve the unpredictability of finding an auto-rickshaw by showing live availability, estimated fares, and contact details.",
+        image:"/P14.png",
+        category:"Mobile Apps",
+        Technologies:["React Native","TypeScript","Superbase"],
+        GitHub:"https://github.com/Athulpk2005/Aye-Auto",
+    },
+    {
+        id:1,
+        title:"Real-Time Chat Web",
+        description:"To build a real-time, web-based chat application that allows developers to communicate, share code snippets with syntax highlighting, and collaborate on technical problems in a streamlined environment.",
+        image:"/P15.png",
+        category:"Full Stack",
+        Technologies:["React","Node.js","Express","MongoDB"],
+        Demo:"https://dev-connect-frontend-pi.vercel.app/",
+        GitHub:"https://github.com/Athulpk2005/DevConnect-Frontend",
+    },
+    {
+        id: 2,
         title: "Anime-Chronos",
         description: "Anime Chronos is a high-end, data-driven tracking platform designed for the ultimate anime enthusiast. It solves the complexity of modern anime franchises by providing a seamless, chronological Watch Order roadmap for every series and movie.",
         image: "/P13.jpeg",
@@ -10,7 +29,7 @@ export const projects = [
         GitHub: "https://github.com/Athulpk2005/Anime-Chronos",
     },
     {
-        id: 1,
+        id: 3,
         title: "Ai-Learning Assistant",
         description: "AI-Powered Learning Assistant App built with the MERN stack. The app provides personalized learning experiences, intelligent recommendations, and real-time feedback to help users improve their skills and knowledge.",
         image: "/P12.jpeg",
@@ -20,7 +39,7 @@ export const projects = [
         GitHub: "https://github.com/Athulpk2005/Ai-Learning-Platform-KnoEra-Ai",
     },
     {
-        id: 2,
+        id: 4,
         title: "Portfolio Website",
         description: "Portfolio Website With React,JavaScript with Tailwind CSS. It is a responsive website that showcases my skills and projects.",
         image: "/S2.png",
@@ -29,7 +48,7 @@ export const projects = [
         GitHub: "https://github.com/Athulpk2005/PERSONAL-WEB",
     },
     {
-        id: 3,
+        id: 5,
         title: "Portfolio Ui",
         description: "Portfolio Ui using Figma. Its Responsive and Mobile Friendly.",
         image: "/P1.png",
@@ -39,7 +58,7 @@ export const projects = [
 
     },
     {
-        id: 4,
+        id: 6,
         title: "Food Deliver Restaurant Dashboard",
         description: "Food Deliver Restaurant Dashboard using React,Tailwind CSS,Node.js,Express js,MongoDB and React Native. Features:Restaurant Management, Order Management, Payment Integration, and more.",
         image: "/P11.jpeg",
@@ -49,13 +68,12 @@ export const projects = [
         GitHub: "https://github.com/Athulpk2005/FoodDelivery",
     },
     {
-        id: 5,
+        id: 7,
         title: "Food Delivery App",
         description: "Food Delivery App using React Native Expo,Node.js,Express js and MongoDB. Features:User Authentication,Orders,Cart,Payment Integration,and more.",
         image: "/P10.jpeg",
         category: "Mobile Apps",
         Technologies: ["React Native", "Node.js", "Express js", "MongoDB"],
-        Demo: "#",
         GitHub: "https://github.com/Athulpk2005/FoodDelivery",
     }
 ]
