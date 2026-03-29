@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://athul-dev.web.app/sitemap.xml
