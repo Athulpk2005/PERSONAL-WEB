@@ -25,7 +25,7 @@ export const projects = [
         image: "/P13.jpeg",
         category: "Full Stack",
         Technologies: ["React", "Next.js", "Tailwind CSS", "Firebase"],
-        Demo: "https://animechronos.vercel.app/",
+        Demo: "https://anime-chronos.vercel.app/",
         GitHub: "https://github.com/Athulpk2005/Anime-Chronos",
     },
     {
