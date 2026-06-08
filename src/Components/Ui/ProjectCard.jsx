@@ -2,9 +2,7 @@ import React from 'react'
 
 import { ExternalLink, Github, TrendingUp } from 'lucide-react'
 
-
-
-const ProjectCard = ({ project }) => {
+const ProjectCard = React.memo(({ project }) => {
 
   const { title, description, image, category, Technologies, Demo, GitHub, Behance } = project
 
@@ -168,7 +166,11 @@ const ProjectCard = ({ project }) => {
 
   )
 
-}
+}, (prevProps, nextProps) => {
+  return prevProps.project.id === nextProps.project.id &&
+         prevProps.project.title === nextProps.project.title &&
+         prevProps.project.image === nextProps.project.image
+})
 
 
 

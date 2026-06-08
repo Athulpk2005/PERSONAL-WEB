@@ -4,13 +4,23 @@ const useLoader = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if this is the first visit
-    const hasVisited = sessionStorage.getItem('hasVisited');
-    
+    let hasVisited = false;
+
+    try {
+      hasVisited = sessionStorage.getItem('hasVisited') === 'true';
+    } catch (error) {
+      // sessionStorage unavailable (e.g., private browsing, storage blocked)
+      hasVisited = true;
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false);
-      sessionStorage.setItem('hasVisited', 'true');
-    }, hasVisited ? 0 : 3000); // Show loader for 3 seconds on first visit only
+      try {
+        sessionStorage.setItem('hasVisited', 'true');
+      } catch (error) {
+        // Ignore storage errors
+      }
+    }, hasVisited ? 0 : 3000);
 
     return () => clearTimeout(timer);
   }, []);

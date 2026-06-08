@@ -112,28 +112,43 @@ const Contact = () => {
           <FadeIn delay={100}>
             <div className="bg-white/5 border border-white/10 p-8 rounded-2xl">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-primary/50"
-                />
-                <input
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="your@email.com"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-primary/50"
-                />
-                <textarea
-                  name="message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white resize-none focus:ring-2 focus:ring-primary/50"
-                />
+                <div>
+                  <label htmlFor="name" className="sr-only">Your Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-primary/50 min-h-[44px]"
+                    autoComplete="name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="sr-only">Email Address</label>
+                  <input
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="your@email.com"
+                    type="email"
+                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-primary/50 min-h-[44px]"
+                    autoComplete="email"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="sr-only">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project..."
+                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white resize-none focus:ring-2 focus:ring-primary/50 min-h-[120px]"
+                  />
+                </div>
 
                 <button 
                   type="submit"

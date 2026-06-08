@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react'
 import Navbar from './Components/Layout/Navbar'
-import Hero from './Components/Sections/Hero' // Keep Hero static for LCP
+import Hero from './Components/Sections/Hero'
 import Footer from './Components/Layout/Footer'
 import Loader from './Components/Loader/Loader'
 import useLoader from './Hooks/useLoader'
+import { SmoothScrollProvider } from './Components/SmoothScroll'
 
 // Lazy load non-critical components
 const About = lazy(() => import('./Components/Sections/About'));
@@ -57,13 +58,15 @@ const App = () => {
           <ProtectedAdmin />
         </Suspense>
       ) : (
-        <>
-          <Navbar />
-          <main id="main-content" role="main">
-            <AppContent />
-          </main>
-          <Footer />
-        </>
+        <SmoothScrollProvider lenisOptions={{ lerp: 0.1, infinite: false }}>
+          <>
+            <Navbar />
+            <main id="main-content" role="main">
+              <AppContent />
+            </main>
+            <Footer />
+          </>
+        </SmoothScrollProvider>
       )}
     </div>
   )

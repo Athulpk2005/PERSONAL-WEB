@@ -1,7 +1,20 @@
 import React from 'react'
 import { skills } from '../../Data/Skills'
 import * as icons from 'lucide-react'
+import { SiAngular, SiPython, SiDjango, SiGraphql, SiPrisma, SiOpenai, SiCloudflare, SiNuxtdotjs } from 'react-icons/si'
 import FadeIn from '../Animations/FadeIn'
+
+const iconMap = {
+  ...icons,
+  SiAngular,
+  SiPython,
+  SiDjango,
+  SiGraphql,
+  SiPrisma,
+  SiOpenai,
+  SiCloudflare,
+  SiNuxtdotjs,
+}
 
 const Skills = () => {
 
@@ -13,6 +26,8 @@ const Skills = () => {
       skills.find(s => s.name === 'JavaScript'),
       skills.find(s => s.name === 'HTML'),
       skills.find(s => s.name === 'CSS'),
+      skills.find(s => s.name === 'Angular'),
+      skills.find(s => s.name === 'Nuxt.js'),
       skills.find(s => s.name === 'Bootstrap'),
       skills.find(s => s.name === 'Tailwind CSS'),
       skills.find(s => s.name === 'Next.js'),
@@ -20,9 +35,12 @@ const Skills = () => {
       skills.find(s => s.name === 'TypeScript'),
     ].filter(Boolean),
 
-    'Backend & APIs': [
+    'Backend ,APIs & Database': [
       skills.find(s => s.name === 'Node.js'),
       skills.find(s => s.name === 'Express.js'),
+      skills.find(s => s.name === 'Python'),
+      skills.find(s => s.name === 'Django'),
+      skills.find(s => s.name === 'GraphQL'),
       skills.find(s => s.name === 'MongoDB'),
       skills.find(s => s.name === 'PostgreSQL'),
       skills.find(s => s.name === 'REST APIs'),
@@ -32,7 +50,9 @@ const Skills = () => {
       skills.find(s => s.name === 'Git'),
       skills.find(s => s.name === 'GitHub'),
       skills.find(s => s.name === 'Figma'),
+      skills.find(s => s.name === 'AI Tools and Agents'),
       skills.find(s => s.name === 'Postman'),
+      skills.find(s => s.name === 'Prisma ORM'),
       skills.find(s => s.name === 'Vite'),
       skills.find(s => s.name === 'npm'),
       skills.find(s => s.name === 'VS Code'),
@@ -44,6 +64,7 @@ const Skills = () => {
       skills.find(s => s.name === 'Firebase'),
       skills.find(s => s.name === 'AWS'),
       skills.find(s => s.name === 'Render'),
+      skills.find(s => s.name === 'Cloudflare'),
     ].filter(Boolean),
   }
 
@@ -114,7 +135,7 @@ const Skills = () => {
                 {/* Skills */}
                 <div className="space-y-5">
                   {categorySkills.map((skill) => {
-                    const IconComponent = icons[skill.icon] || icons.Code2
+                    const IconComponent = iconMap[skill.icon] || icons.Code2
                     const proficiency = getProficiencyLevel(skill.level)
 
                     return (

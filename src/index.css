@@ -45,7 +45,6 @@
 @layer base {
     html {
         font-family: var(--font-family);
-        scroll-behavior: smooth;
     }
 
     body {
@@ -54,6 +53,11 @@
         background-color: #000000;
         color: #ffffff;
         overflow-x: hidden;
+    }
+
+    #root {
+        min-height: 100vh;
+        background-color: #000000;
     }
 
     /* Custom scrollbar */
@@ -81,7 +85,6 @@
     }
 
     /* Hide Scrollbar for Carousel*/
-
     .hide-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -92,26 +95,31 @@
     }
 
     /* Animation Keyframes*/
-
     @keyframes fadeIn {
         from {
             opacity: 0;
         }
-
         to {
             opacity: 1;
         }
     }
 
     @keyframes pulse {
-
         0%,
         100% {
             opacity: 0.3;
         }
-
         50% {
             opacity: 0.5;
+        }
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
         }
     }
 
@@ -128,16 +136,6 @@
         animation: spin 8s linear infinite;
     }
 
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
     /* Line Clamp */
     .line-clamp-2 {
         display: -webkit-box;
@@ -152,5 +150,4 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-
 }

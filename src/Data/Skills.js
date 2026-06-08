@@ -156,10 +156,57 @@ export const skills = [
         level: "Expert"
     },
     {
+        id: 33,
+        name: "AI Tools and Agents",
+        icon: "Nautilus",
+        level: "Expert"
+    },
+    {
+        id: 35,
+        name: "Nuxt.js",
+        icon: "SiNuxtdotjs",
+        level: "Beginner"
+    },
+    {
+        id: 34,
+        name: "Cloudflare",
+        icon: "SiCloudflare",
+        level: "Advanced"
+    },
+    {
+        id: 32,
+        name: "Prisma ORM",
+        icon: "SiPrisma",
+        level: "Advanced"
+    },
+    {
+        id: 31,
+        name: "GraphQL",
+        icon: "SiGraphql",
+        level: "Advanced"
+    },
+    {
+        id: 30,
+        name: "Django",
+        icon: "SiDjango",
+        level: "Advanced"
+    },
+    {
+        id: 29,
+        name: "Python",
+        icon: "SiPython",
+        level: "Advanced"
+    },
+    {
+        id: 28,
+        name: "Angular",
+        icon: "SiAngular",
+        level: "Advanced"
+    },
+    {
         id: 27,
         name: "React Native",
         icon: "Smartphone",
         level: "Advanced"
     }
-
 ]

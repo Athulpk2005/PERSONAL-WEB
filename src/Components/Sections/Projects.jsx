@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { projects, categories } from '../../Data/project'
 import {
   Briefcase,
@@ -19,6 +19,7 @@ const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [visibleCards, setVisibleCards] = useState(3)
   const scrollRef = useRef(null)
+  const cardsRef = useRef([])
 
   /* =======================
      RESPONSIVE CARD COUNT
@@ -36,12 +37,13 @@ const Projects = () => {
   }, [])
 
   /* =======================
-     FILTER PROJECTS
+     FILTER PROJECTS (MEMOIZED)
   ======================== */
-  const filteredProjects =
-    activeCategory === 'All'
+  const filteredProjects = useMemo(() => {
+    return activeCategory === 'All'
       ? projects
       : projects.filter(p => p.category === activeCategory)
+  }, [activeCategory])
 
   const categoryIcons = {
     All: Target,
@@ -52,53 +54,62 @@ const Projects = () => {
   }
 
   /* =======================
-     SCROLL TO CARD (FIXED)
+     SCROLL TO CARD (OPTIMIZED)
   ======================== */
-  const scrollToIndex = (index) => {
-    if (!scrollRef.current) return
-
-    const cards = scrollRef.current.querySelectorAll('[data-card]')
-    if (!cards[index]) return
+  const scrollToIndex = useCallback((index) => {
+    const card = cardsRef.current[index]
+    if (!card || !scrollRef.current) return
 
     setCurrentIndex(index)
-
-    cards[index].scrollIntoView({
+    card.scrollIntoView({
       behavior: 'smooth',
       inline: 'start',
-      block: 'nearest', // ✅ prevents page jump
+      block: 'nearest',
     })
-  }
+  }, [])
 
 
-  const next = () =>
-    scrollToIndex(
-      Math.min(currentIndex + 1, filteredProjects.length - visibleCards)
-    )
+  const next = useCallback(() => {
+    const nextIndex = Math.min(currentIndex + 1, filteredProjects.length - visibleCards)
+    scrollToIndex(nextIndex)
+  }, [currentIndex, filteredProjects.length, visibleCards, scrollToIndex])
 
-  const prev = () =>
-    scrollToIndex(Math.max(currentIndex - 1, 0))
+  const prev = useCallback(() => {
+    const prevIndex = Math.max(currentIndex - 1, 0)
+    scrollToIndex(prevIndex)
+  }, [currentIndex, scrollToIndex])
 
   /* =======================
-     SYNC INDEX ON SCROLL
+     SYNC INDEX ON SCROLL (THROTTLED)
   ======================== */
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
 
+    let ticking = false
+
     const onScroll = () => {
-      const cards = el.querySelectorAll('[data-card]')
-      let index = 0
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollLeft = el.scrollLeft
+          let index = 0
 
-      cards.forEach((card, i) => {
-        if (card.offsetLeft <= el.scrollLeft + 10) index = i
-      })
+          cardsRef.current.forEach((card, i) => {
+            if (card && card.offsetLeft <= scrollLeft + 10) index = i
+          })
 
-      setCurrentIndex(index)
+          setCurrentIndex(index)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    el.addEventListener('scroll', onScroll)
-    return () => el.removeEventListener('scroll', onScroll)
-  }, [])
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      el.removeEventListener('scroll', onScroll)
+    }
+  }, [filteredProjects.length])
 
   /* =======================
      RENDER
@@ -171,10 +182,10 @@ const Projects = () => {
               <button
                 onClick={prev}
                 disabled={currentIndex === 0}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-20
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20
                 bg-black/50 backdrop-blur-md border border-white/10
                 rounded-full p-3 text-white hover:bg-primary/20
-                disabled:opacity-40"
+                disabled:opacity-40 min-w-[44px] min-h-[44px] flex items-center justify-center"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -185,10 +196,10 @@ const Projects = () => {
               <button
                 onClick={next}
                 disabled={currentIndex >= filteredProjects.length - visibleCards}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-20
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20
                 bg-black/50 backdrop-blur-md border border-white/10
                 rounded-full p-3 text-white hover:bg-primary/20
-                disabled:opacity-40"
+                disabled:opacity-40 min-w-[44px] min-h-[44px] flex items-center justify-center"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -199,15 +210,15 @@ const Projects = () => {
               <div className="
                 flex gap-6
                 overflow-x-auto
-                scroll-smooth
                 snap-x snap-mandatory
-                scrollbar-hide
+                hide-scrollbar
                 px-1
               ">
-                {filteredProjects.map(project => (
+                {filteredProjects.map((project, i) => (
                   <div
                     key={project.id}
                     data-card
+                    ref={el => cardsRef.current[i] = el}
                     className="
                       snap-start
                       shrink-0

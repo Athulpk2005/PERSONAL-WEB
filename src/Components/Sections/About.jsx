@@ -1,5 +1,5 @@
 import React from 'react'
-import { Download, Code2, Sparkles, Eye } from 'lucide-react'
+import { Download, Code2, Sparkles, Eye, MapPin } from 'lucide-react'
 import {
   SiHtml5,
   SiCss3,
@@ -12,10 +12,12 @@ import {
   SiFigma,
   SiGit,
   SiGithub,
+  SiAngular,
+  SiNuxtdotjs,
 } from 'react-icons/si'
 import { PERSONAL_INFO } from '../../Utils/constants'
 import FadeIn from '../Animations/FadeIn'
-import RadialGradientBackground from '../backgrounds/RadialgradientBackground'
+import RadialGradientBackground from '../Backgrounds/RadialGradientBackground'
 
 const About = () => {
   const skills = [
@@ -24,6 +26,7 @@ const About = () => {
     { name: 'JavaScript', icon: SiJavascript, color: '#f7df1e' },
     { name: 'React', icon: SiReact, color: '#61dafb' },
     { name: 'React Native', icon: SiReact, color: '#61dafb' },
+    { name: 'Angular', icon: SiAngular, color: '#dd0031' },
     { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06b6d4' },
     { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
     { name: 'Express', icon: SiExpress, color: '#ffffff' },
@@ -59,7 +62,7 @@ const About = () => {
 
             <FadeIn delay={100}>
               <h2 className="text-4xl lg:text-5xl font-normal text-white leading-tight md:text-center lg:text-left">
-                Crafting Digital Experiences That Matter
+                Best Freelance Developer & Full Stack Expertise
               </h2>
             </FadeIn>
 

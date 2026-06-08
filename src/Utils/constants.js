@@ -1,12 +1,16 @@
 export const PERSONAL_INFO = {
-    name: "Athul",
+    name: "Athul PK",
     title: "Full Stack Developer & UI/UX Designer",
     email: "athul250405@gmail.com",
-    location: "India, Kerala",
-    tagline: "Full Stack Developer with a passion for creating engaging and user-friendly websites.",
-    resume: "/ATHUL's CV.pdf",
+    location: "Kozhikode, Kerala, India",
+    city: "Kozhikode",
+    state: "Kerala",
+    country: "India",
+    tagline: "Best Freelance developer & Full Stack Developer. Expert Full Stack Developer delivering high-quality, cost-effective web and mobile solutions.",
     bio: [
-        "I’m a fresher Full Stack Developer with UI/UX design skills, experienced in designing,developing full-stack web applications and mobile applications.I work with Figma, React, Node.js, Express,React Native and MongoDB to create user-centric, responsive, and scalable digital solutions. I’m actively seeking opportunities to start my professional career in full-stack development and UI/UX design."
+        "Looking for the best developer in Calicut, Kerala? I am a results-driven freelance developer specializing in full stack web development, mobile app development, and UI/UX design. Based in Kozhikode, Kerala, India, I deliver affordable freelance development services without compromising on quality.",
+        "As an affordable freelance developer in Calicut, I help startups, small businesses, and enterprises build scalable digital products using React, Node.js, Express, MongoDB, and React Native. My approach combines technical excellence with cost-effective solutions, making me the best developer choice for projects of all sizes in Kerala and across India.",
+        "Whether you need a responsive website, a cross-platform mobile app, or a complete full stack solution, I provide end-to-end development services tailored to your budget and timeline. Let's collaborate to transform your ideas into powerful, user-friendly applications."
     ]
 }
 

@@ -59,7 +59,7 @@ const Services = () => {
           {services.slice(0, 3).map((service, index) => {
             const IconComponent = Icons[service.icon] || Icons.Code2
             return (
-              <FadeIn key={service.id} delay={index * 100}>
+              <FadeIn key={service.id} delay={index * 100} className="h-full">
                 <ServiceCard service={service} IconComponent={IconComponent} />
               </FadeIn>
             )
@@ -71,7 +71,7 @@ const Services = () => {
           {services.slice(3, 7).map((service, index) => {
             const IconComponent = Icons[service.icon] || Icons.Code2
             return (
-              <FadeIn key={service.id} delay={(index + 3) * 100}>
+              <FadeIn key={service.id} delay={(index + 3) * 100} className="h-full">
                 <ServiceCard service={service} IconComponent={IconComponent} />
               </FadeIn>
             )

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Code, Menu, X } from 'lucide-react'
 import { NAV_LINKS, PERSONAL_INFO } from '../../Utils/constants'
 import { useScrollSpy, scrollToSection } from '../../Hooks/useScrollSpy'
+import { getLenisInstance } from '../SmoothScroll'
 
 const Navbar = () => {
 
@@ -48,7 +49,7 @@ const Navbar = () => {
             {/*Logo*/}
             <div className='flex items-center gap-4'>
               <Code className='w-6 h-6 text-primary' />
-              <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              <button onClick={() => window.scrollTo({ top: 0 })}
                 className='text-2xl font-bold bg-linear-to-r from-primary via-primary/50 to-primary/30 bg-clip-text text-transparent hover:opacity-80 transition-opacity'
                 aria-label='home'>
                 {PERSONAL_INFO.name.split(' ')[0]}

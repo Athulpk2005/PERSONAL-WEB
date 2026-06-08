@@ -4,7 +4,7 @@ import { SiReact, SiExpress, SiTailwindcss, SiNodedotjs, SiMongodb } from 'react
 import { PERSONAL_INFO, STATS } from '../../Utils/constants'
 import { scrollToSection } from '../../Hooks/useScrollSpy'
 import FadeIn from '../Animations/FadeIn'
-import RadialgradientBackground from '../backgrounds/RadialgradientBackground'
+import RadialGradientBackground from '../Backgrounds/RadialGradientBackground'
 import Dev from '../../assets/DEV.png'
 
 
@@ -12,7 +12,7 @@ import Dev from '../../assets/DEV.png'
 const Hero = () => {
   return (
     <section className='relative min-h-screen flex items-center overflow-hidden bg-black'>
-      <RadialgradientBackground Variant='hero' />
+      <RadialGradientBackground Variant='hero' />
 
       {/* Content Container */}
       <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full'>
@@ -72,12 +72,17 @@ const Hero = () => {
                 <div className='absolute inset-0 rounded-2xl overflow-hidden'>
                   <div className=' absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-spin-slow rounded-2xl'></div>
                 </div>
-                {/* Image Container*/}
+                 {/* Image Container*/}
                 <div className='relative rounded-2xl overflow-hidden m-px h-[calc(100%-2px)]'>
-                  <img src={Dev} alt="DEVELOPER AT WORK"
+                  <img
+                    src={Dev}
+                    alt="DEVELOPER AT WORK"
+                    width="500"
+                    height="625"
                     fetchpriority="high"
                     decoding="async"
-                    className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' />
+                    className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110'
+                  />
                 </div>
 
                 {/* Technology Logos*/}
